@@ -1,0 +1,55 @@
+/* Page Content Styles
+----------------------------------------------- */
+
+.page {
+
+    &__container {
+        padding-top: 60px;
+        padding-bottom: 60px;
+
+        @include tablet() {
+            padding-top: 105px;
+            padding-bottom: 75px;
+        }
+    }
+
+    &__header {
+        display: block;
+        margin-bottom: 30px;
+
+        .hdg--4 {
+            margin-top: 10px;
+        }
+    }
+
+    &__content {
+        font-size: 20px;
+    }
+
+    &__form {
+
+        @include desktop() {
+            max-width: 80%;
+        }
+
+        @include desktop-lg() {
+            max-width: 60%;
+        }
+
+        .page__header {
+            margin-bottom: 30px;
+
+            @include tablet() {
+                margin-bottom: 60px;
+            }
+
+            .hdg--4 {
+                margin-top: 15px;
+
+                @include tablet() {
+                    margin-top: 30px;
+                }
+            }
+        }
+    }
+}

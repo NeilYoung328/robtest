@@ -1,0 +1,110 @@
+/* Module: Hero
+----------------------------------------------- */
+
+.module-hero {
+
+    &--white {
+
+        &:before {
+            content: "";
+            position: absolute;
+            z-index: 2;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+            @include linear-gradient(-90deg, transparent, $black);
+
+            @include tablet() {
+                width: 75%;
+            }
+        }
+    }
+}
+
+.hero {
+    position: relative;
+    z-index: 3;
+    padding-top: 60px;
+    padding-bottom: 105px;
+    text-align: center;
+    overflow: hidden;
+
+    p {
+        font-size: 18px;
+        margin-bottom: 25px;
+    }
+
+    @include tablet() {
+        padding-top: 115px;
+        padding-bottom: 175px;
+        min-height: 445px;
+    }
+
+    @include desktop() {
+        text-align: left;
+        min-height: 665px;
+
+        p {
+            font-size: 20px;
+        }
+    }
+
+    &__content {
+
+        &::before {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            left: -100%;
+            right: -100%;
+            top: -100%;
+            bottom: -100%;
+            background: $white;
+            @include opacity(0.30);
+        }
+
+        @include tablet() {
+
+            &:before {
+                display: none;
+            }
+        }
+    }
+
+    &__content--white {
+
+        p {
+            color: $white;
+        }
+
+        &:before {
+            background: $black;
+        }
+    }
+
+    &__image {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        z-index: 1;
+        -webkit-background-size: cover;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        @include opacity(0);
+        @include transition($ease);
+    }
+
+    &--post {
+        padding: 0;
+
+        img {
+            @include opacity(0);
+            @include transition($ease);
+        }
+    }
+}

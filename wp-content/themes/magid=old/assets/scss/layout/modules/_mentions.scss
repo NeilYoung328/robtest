@@ -1,0 +1,139 @@
+/* Module: Mentions
+----------------------------------------------- */
+
+.module-mentions {
+    border-bottom: 1px solid $silver;
+}
+
+.mentions {
+    padding-bottom: 15px;
+
+    @include tablet() {
+        padding-bottom: 30px;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-flow: row wrap;
+        flex-flow: row wrap;
+        -webkit-align-content: flex-start;
+        align-content: flex-start;
+        -webkit-justify-content: flex-start;
+        justify-content: flex-start;
+    }
+
+    &--blog {
+        padding-top: 30px;
+
+        @include tablet() {
+            padding-top: 45px;
+        }
+    }
+
+    &__load-more {
+        text-align: center;
+        margin-bottom: 30px;
+
+        @include tablet() {
+            margin-top: -15px;
+            margin-bottom: 45px;
+        }
+    }
+
+    &__headline {
+        text-align: center;
+        padding: 30px 15px 0;
+    }
+
+    &__not-found {
+        text-align: center;
+        padding: 30px 15px;
+        display: block;
+        width: 100%;
+    }
+}
+
+.mention {
+    position: relative;
+    margin-bottom: 15px;
+    border-left: 15px solid $white;
+    border-right: 15px solid $white;
+
+    @include tablet() {
+        -webkit-flex: 0 1 (100%/2);
+        flex: 0 1 (100%/2);
+        margin-bottom: 30px;
+    }
+
+    @include desktop() {
+        -webkit-flex: 0 1 (100%/3);
+        flex: 0 1 (100%/3);
+
+        &--left {
+            -webkit-flex: 0 1 (200%/3);
+            flex: 0 1 (200%/3);
+        }
+    }
+
+    .entry {
+        padding: 25px 20px;
+    }
+
+    .entry__meta {
+        margin-bottom: 20px;
+        color: $white;
+
+        .entry-terms a {
+            color: $white;
+        }
+
+        .meta__author {
+            display: block;
+        }
+    }
+
+    .entry__header {
+        margin-bottom: 20px;
+        word-break: break-word;
+
+        a {
+            color: $white;
+            
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .entry__excerpt {
+        color: $white;
+        margin-bottom: 45px;
+        word-break: break-word;
+    }
+
+    .entry_read-more {
+        display: block;
+        color: $tundora;
+        font-weight: $medium;
+        position: relative;
+        padding-left: 15px;
+        margin-bottom: 15px;
+
+        .icon {
+            fill: $tundora;
+            height: 24px;
+            width: 24px;
+            @include rotate(270deg);
+            vertical-align: middle;
+            position: absolute;
+            left: -10px;
+            top: 1px;
+        }
+    }
+}
+
+.mentions__toggle {
+
+    &.disabled {
+        pointer-events: none;
+        background: $alabaster;
+    }
+}

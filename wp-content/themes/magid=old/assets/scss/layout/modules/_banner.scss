@@ -1,0 +1,95 @@
+/* Module: Content Block
+----------------------------------------------- */
+
+.module-banner {
+    position: relative;
+    border-bottom: 1px solid $silver;
+    text-align: center;
+
+    &__background {
+        position: absolute;
+        z-index: -1;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        -webkit-background-size: cover;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+
+    &:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        background: $black;
+        @include opacity(0.70);
+        @include transition($ease);
+    }
+
+    @include tablet() {
+        &:before {
+            background: $white;
+            @include opacity(1);
+        }
+
+        &:hover {
+
+            &:before {
+                background: $black;
+                @include opacity(0.70);
+            }
+
+            .banner__content {
+                color: $white;
+
+                .btn {
+                    visibility: visible;
+                }
+            }
+
+            .banner__hover {
+                @include translateY(0);
+            }
+        }
+    }
+}
+
+.banner {
+
+    &__content {
+        overflow: hidden;
+        font-size: 16px;
+        color: $white;
+        padding-top: 45px;
+        padding-bottom: 45px;
+
+        .btn {
+            @include transition(all 0.15s ease-in-out);
+            margin-top: 25px;
+            display: inline-block;
+            font-size: 18px;
+        }
+
+        @include tablet() {
+            padding-top: 35px;
+            padding-bottom: 35px;
+            color: $tundora;
+
+            .btn {
+                visibility: hidden;
+            }
+        }
+    }
+    @include tablet() {
+        &__hover {
+            position: relative;
+            @include transition(transform 0.15s ease-in-out);
+            @include translateY(30px);
+        }
+    }
+}

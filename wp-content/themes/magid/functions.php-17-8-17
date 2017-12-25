@@ -1,0 +1,125 @@
+<?php
+/**
+ * Functions and definitions
+ *
+ * @package Magid
+ */
+
+use Magid\App\Core\Init;
+use Magid\App\Core\Transients;
+use Magid\App\Setup;
+use Magid\App\Scripts;
+use Magid\App\ACF;
+use Magid\App\Media;
+use Magid\App\Forms;
+use Magid\App\HybridMods;
+use Magid\App\Shortcodes;
+use Magid\App\Taxonomy;
+use Magid\App\Posts\PostAttributes;
+use Magid\App\Posts\PostTypes;
+use Magid\App\Http\PostsController;
+use Magid\App\Http\MemberController;
+use Magid\App\Http\CareerController;
+use Magid\App\Http\CourseController;
+use Magid\App\Http\ConsortiumController;
+use Magid\App\Http\InstituteController;
+
+/**
+ * Define Theme Version
+ * Defines custom Hybrid Core directory.
+ */
+define( 'THEME_VERSION', '1.4.5' );
+define( 'MAGID_THEME_DIR', trailingslashit( get_template_directory() ) );
+define( 'MAGID_THEME_PATH_URL', trailingslashit( get_template_directory_uri() ) );
+define( 'HYBRID_DIR', __DIR__ . '/vendor/justintadlock/hybrid-core/' );
+define( 'HYBRID_URI', get_template_directory_uri() . '/vendor/justintadlock/hybrid-core/' );
+
+/**
+ * Requires Autoloader
+ * Loads the Hybrid Core framework
+ */
+require_once MAGID_THEME_DIR . 'vendor/autoload.php';
+require_once HYBRID_DIR . 'hybrid.php';
+require_once 'vendor/mmucklo/krumo/class.krumo.php';
+
+new Hybrid();
+new Krumo();
+
+/**
+ * Theme Setup
+ */
+add_action( 'after_setup_theme', function () {
+    ( new Init() )
+        ->add( new Setup() )
+        ->add( new Scripts() )
+        ->add( new ACF() )
+        ->add( new HybridMods() )
+        ->add( new Shortcodes() )
+        ->add( new Media() )
+        ->add( new Forms() )
+        ->add( new PostTypes() )
+        ->add( new Taxonomy() )
+        ->add( new Transients() )
+        ->add( new PostAttributes() )
+        ->add( new PostsController() )
+        ->add( new MemberController() )
+        ->add( new CareerController() )
+        ->add( new CourseController() )
+        ->add( new ConsortiumController() )
+        ->add( new InstituteController() )
+        ->initialize();
+
+    // Translation setup
+    load_theme_textdomain( 'magid', get_template_directory() . '/languages' );
+
+    // Enable custom template hierarchy.
+    add_theme_support( 'hybrid-core-template-hierarchy' );
+
+    // Add automatic feed links in header
+    add_theme_support( 'automatic-feed-links' );
+
+    // Add Post Thumbnail Image sizes and support
+    add_theme_support( 'post-thumbnails' );
+
+    // Switch default core markup to output valid HTML5.
+    add_theme_support( 'html5', [
+        'search-form',
+        'comment-form',
+        'comment-list',
+        'gallery',
+        'caption'
+    ] );
+
+} );
+
+/*function custom_length( $length ) {
+    return 250;
+}
+add_filter( 'excerpt_length', 'custom_length', 999 );
+
+function custom_excerpt_more( $more ) {
+    return false;
+}
+add_filter( 'excerpt_more', 'custom_excerpt_more' );*/
+add_action( 'wp_head', 'custom_head' );
+
+function custom_head(){
+	if( is_front_page() ){
+		echo "<style>h2 a {color: #4a4a4a;}</style>";
+	}
+}
+
+function skill_sidebar() {
+    register_sidebar(
+        array (
+            'name' => __( 'Custom Skill', 'magid' ),
+            'id' => 'custom-skill-bar',
+            'description' => __( 'Custom Sidebar', 'magid' ),
+            'before_widget' => '<div class="">',
+            'after_widget' => "</div>",
+            'before_title' => '<h3 class="">',
+            'after_title' => '</h3>',
+        )
+    );
+}
+add_action( 'widgets_init', 'skill_sidebar' );

@@ -1,0 +1,207 @@
+<?php
+/**
+ * Functions and definitions
+ *
+ * @package Magid
+ */
+
+use Magid\App\Core\Init;
+use Magid\App\Core\Transients;
+use Magid\App\Setup;
+use Magid\App\Scripts;
+use Magid\App\ACF;
+use Magid\App\Media;
+use Magid\App\Forms;
+use Magid\App\HybridMods;
+use Magid\App\Shortcodes;
+use Magid\App\Taxonomy;
+use Magid\App\Posts\PostAttributes;
+use Magid\App\Posts\PostTypes;
+use Magid\App\Http\PostsController;
+use Magid\App\Http\MemberController;
+use Magid\App\Http\CareerController;
+use Magid\App\Http\CourseController;
+use Magid\App\Http\ConsortiumController;
+use Magid\App\Http\InstituteController;
+
+/**
+ * Define Theme Version
+ * Defines custom Hybrid Core directory.
+ */
+define( 'THEME_VERSION', '1.4.5' );
+define( 'MAGID_THEME_DIR', trailingslashit( get_template_directory() ) );
+define( 'MAGID_THEME_PATH_URL', trailingslashit( get_template_directory_uri() ) );
+define( 'HYBRID_DIR', __DIR__ . '/vendor/justintadlock/hybrid-core/' );
+define( 'HYBRID_URI', get_template_directory_uri() . '/vendor/justintadlock/hybrid-core/' );
+
+/**
+ * Requires Autoloader
+ * Loads the Hybrid Core framework
+ */
+require_once MAGID_THEME_DIR . 'vendor/autoload.php';
+require_once HYBRID_DIR . 'hybrid.php';
+require_once 'vendor/mmucklo/krumo/class.krumo.php';
+
+new Hybrid();
+new Krumo();
+
+/**
+ * Theme Setup
+ */
+add_action( 'after_setup_theme', function () {
+    ( new Init() )
+        ->add( new Setup() )
+        ->add( new Scripts() )
+        ->add( new ACF() )
+        ->add( new HybridMods() )
+        ->add( new Shortcodes() )
+        ->add( new Media() )
+        ->add( new Forms() )
+        ->add( new PostTypes() )
+        ->add( new Taxonomy() )
+        ->add( new Transients() )
+        ->add( new PostAttributes() )
+        ->add( new PostsController() )
+        ->add( new MemberController() )
+        ->add( new CareerController() )
+        ->add( new CourseController() )
+        ->add( new ConsortiumController() )
+        ->add( new InstituteController() )
+        ->initialize();
+
+    // Translation setup
+    load_theme_textdomain( 'magid', get_template_directory() . '/languages' );
+
+    // Enable custom template hierarchy.
+    add_theme_support( 'hybrid-core-template-hierarchy' );
+
+    // Add automatic feed links in header
+    add_theme_support( 'automatic-feed-links' );
+
+    // Add Post Thumbnail Image sizes and support
+    add_theme_support( 'post-thumbnails' );
+
+    // Switch default core markup to output valid HTML5.
+    add_theme_support( 'html5', [
+        'search-form',
+        'comment-form',
+        'comment-list',
+        'gallery',
+        'caption'
+    ] );
+
+} );
+
+/*function custom_length( $length ) {
+    return 250;
+}
+add_filter( 'excerpt_length', 'custom_length', 999 );
+
+function custom_excerpt_more( $more ) {
+    return false;
+}
+add_filter( 'excerpt_more', 'custom_excerpt_more' );*/
+add_action( 'wp_head', 'custom_head' );
+
+function custom_head(){
+	if( is_front_page() ){
+		echo "<style>h2 a {color: #4a4a4a;}</style>";
+	}
+}
+
+function skill_sidebar() {
+    register_sidebar(
+        array (
+            'name' => __( 'Custom Skill', 'magid' ),
+            'id' => 'custom-skill-bar',
+            'description' => __( 'Custom Sidebar', 'magid' ),
+            'before_widget' => '<div class="">',
+            'after_widget' => "</div>",
+            'before_title' => '<h3 class="">',
+            'after_title' => '</h3>',
+        )
+    );
+}
+add_action( 'widgets_init', 'skill_sidebar' );
+
+
+
+
+
+
+
+//add_action( 'gform_after_submission_7', 'submission_form_3', 10, 2 );
+
+function submission_form_3($entry, $form) {
+//print_r($entry);
+  //  $entry_id = $entry['id'];
+  //  $firstname = $entry[1];
+  //  $lastname = $entry[2];
+   // $title = $entry[6];
+   // $companyname = $entry[4];
+   // $email = $entry[3];
+	//$message = $entry[7];
+	  
+ 
+      
+   // GFAPI::update_entry_property( $entry['id'], 'created_by', $user_id );   
+}
+
+function desktop_skills(){
+    $taxonomy = 'skill';
+    $tax_terms = get_terms($taxonomy);
+    $queried_object = get_queried_object();
+    $default_skill = $queried_object->term_id;
+   
+    
+    
+    $return = '';
+    foreach($tax_terms as $term){
+            $term_link = get_term_link( $term );
+            $sele = $default_skill == $term->term_id ? 'selected':'';
+            $return .="<div class='col-sm-6 col-md-3 col-lg-3 content--center ".$sele."'>";
+                $return .= "<a href = '".$term_link."'>".$term->name."</a>";
+            $return .="</div>";
+    }
+    
+    return $return;
+}
+
+add_shortcode('DSKILLS','desktop_skills');
+
+
+/*******/
+function desktop_skills_mobile(){
+	
+	//$id = "{$taxonomy}-dropdown";
+  $js =<<<SCRIPT
+<script type="text/javascript">
+ jQuery(document).ready(function($){
+  jQuery("#memberdropmb").change(function(){
+    window.location.href = $(this).val();
+  });
+ });
+</script>
+SCRIPT;
+	 echo $js;
+    $taxonomy = 'skill';
+    $tax_terms = get_terms($taxonomy);
+    $queried_object = get_queried_object();
+    $default_skill = $queried_object->term_id;
+    $return = '';
+	  //$return .="<select class='col-sm-3 content--center ".$sele."'  id=\"{$sele}\" >";
+	  $return .="<select class='col-sm-3 content--center ".$sele."' name='memberdropmb'  id='memberdropmb' >";
+	    $return .= "<option value=''>  Choose a Team of Experts </option>";
+    foreach($tax_terms as $term){
+            $term_links = get_term_link( $term );
+            $sele = $default_skill == $term->term_id ? 'selected':'';
+                $return .= "<option value='".$term_links."' ".$sele.">".$term->name."</option>";
+           }
+    $return .="</select>";
+    
+    return $return;
+}
+
+add_shortcode('DSKILLSMB','desktop_skills_mobile');
+
+

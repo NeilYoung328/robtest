@@ -1,0 +1,72 @@
+/* Post Author Styles
+----------------------------------------------- */
+
+.author {
+    border-top: 1px solid $silver;
+    margin-top: 75px;
+    padding-top: 30px;
+    margin-bottom: -15px;
+    position: relative;
+
+    @include tablet() {
+        width: 50%;
+    }
+
+    &__thumb {
+        height: auto;
+        position: absolute;
+        left: 0;
+        max-width: 75px;
+
+        img {
+            display: block;
+        }
+
+        @include tablet() {
+            max-width: 100px;
+        }
+    }
+
+    &__content {
+        font-size: 18px;
+        font-weight: $medium;
+        line-height: 1.4;
+        padding-left: 100px;
+        min-height: 75px;
+
+        @include tablet() {
+            padding-left: 125px;
+            min-height: 100px;
+        }
+    }
+
+    &__name {
+        color: $jaffa;
+        display: block;
+    }
+
+    &__email {
+        display: block;
+        color: $tundora;
+    }
+
+    &__socials {
+        display: block;
+        margin-top: 10px;
+    }
+
+    &__social {
+        display: inline-block;
+
+        .icon {
+            fill: $jaffa;
+            width: 24px;
+            height: 24px;
+            @include transition($ease);
+        }
+
+        &:hover .icon {
+            fill: $buttercup;
+        }
+    }
+}

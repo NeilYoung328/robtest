@@ -1,0 +1,44 @@
+/* Basic Setup
+----------------------------------------------- */
+body {
+    word-wrap: break-word;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+    font-family: $franklin-gothic;
+    font-size: 18px;
+    line-height: 1.55;
+    color: $tundora;
+}
+
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: $jaffa;
+    @include transition($ease);
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+.content {
+
+    &--left {
+        text-align: left;
+    }
+
+    &--center {
+        text-align: center;
+    }
+
+    &--right {
+        text-align: right;
+    }
+}

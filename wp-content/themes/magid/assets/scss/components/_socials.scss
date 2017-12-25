@@ -1,0 +1,65 @@
+/* Site social icons
+----------------------------------------------- */
+
+.site__socials {
+
+    &--top {
+        margin-bottom: 15px;
+        text-align: center;
+
+        @include tablet() {
+            margin-bottom: 22px;
+            text-align: right;
+        }
+    }
+
+    &--bottom {
+        text-align: center;
+        margin-top: 30px;
+    }
+}
+
+.site__social {
+    margin: 0 5px;
+    display: inline-block;
+    vertical-align: middle;
+
+    .icon {
+        display: block;
+        width: 32px;
+        height: 32px;
+        fill: $jaffa;
+        @include transition($ease);
+    }
+
+    &:hover .icon {
+        fill: $white;
+    }
+
+    &--post {
+
+        .icon {
+            fill: $jaffa;
+        }
+
+        &:hover .icon {
+            fill: $buttercup;
+        }
+    }
+}
+
+.nav {
+
+    .site__social {
+        margin: 15px 8px 10px 0;
+
+        .icon {
+            width: 40px;
+            height: 40px;
+
+            &:hover {
+                fill: $tundora;
+            }
+        }
+    }
+}

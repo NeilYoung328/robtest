@@ -1,0 +1,62 @@
+<?php
+/**
+ * Module: Content Block
+ *
+ * @package Magid
+ */
+
+use Magid\App\Modules\ModuleAttributes;
+
+// get module content
+$module_args = [
+    'headline',
+    'content',
+    'width',
+    'padding',
+    'text_align',
+	'customlink',
+];
+$attributes  = ModuleAttributes::getModuleSubFieldAttributes( $module_args );
+extract( $attributes );
+
+// module columns
+switch ( $width ) {
+    case 'small' :
+        $columns = 'col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2';
+        break;
+    case 'medium' :
+        $columns = 'col-md-10 col-md-offset-1';
+        break;
+    default :
+        $columns = 'col-sm-12';
+}
+// top/bottom padding
+switch ( $padding ) {
+    case 'small' :
+        $vertical_padding = ' pad-xs--30 pad-sm--45';
+        break;
+    case 'large' :
+        $vertical_padding = ' pad-xs--60 pad-sm--90 pad-md--105';
+        break;
+    default :
+        $vertical_padding = ' pad-xs--45 pad-sm--60 pad-md--75';
+}
+?>
+
+<section id="content-<?php echo $module_id; ?>" class="module module-content-block">
+    <div class="container">
+        <div class="row">
+            <div class="<?php echo $columns . $vertical_padding; ?> content--<?php echo $text_align; ?>">
+			<?php 
+			
+			//$ertlink = get_field( "customlink" ); 
+			
+			print_r($ertlink ); ?>
+                <?php
+                echo $headline ? '<h2 class="hdg hdg--2 hdg--mb-15 jjjj"><a href="'. $customlink .'">' . $headline . '</a></h2>' : '';
+                echo $content ? '<div class="entry__content">' . $content . '</div>' : '';
+                ?>
+            </div>
+        </div>
+    </div>
+</section>

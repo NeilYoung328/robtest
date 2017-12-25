@@ -1,0 +1,59 @@
+/* Variables
+----------------------------------------------- */
+
+$white: #ffffff;
+$alabaster: #F9F9F9;
+$silver: #CCCCCC;
+$dusty-gray: #9B9B9B;
+$tundora: #4A4A4A;
+$thunder: #373536;
+$mine-shaft: #252525;
+$black: #000000;
+
+$jaffa: #F47637;
+$buttercup: #F7941D;
+
+$error: #e74c3c;
+$success: #2ecc71;
+
+/* Fonts
+----------------------------------------------- */
+$franklin-gothic: "franklin-gothic-urw", sans-serif;
+
+// franklin gothic weights
+$book: 400;
+$medium: 500;
+$demi: 700;
+
+// transition
+$ease: all 0.2s ease-in-out;
+
+/* Media queries breakpoints
+----------------------------------------------- */
+
+$screen-xs: 480px;
+$screen-phone: $screen-xs;
+
+$screen-sm: 768px;
+$screen-tablet: $screen-sm;
+
+$screen-md: 992px;
+$screen-desktop: $screen-md;
+
+$screen-lg: 1200px;
+$screen-lg-desktop: $screen-lg;
+
+$screen-xs-max: ($screen-sm - 1);
+$screen-sm-max: ($screen-md - 1);
+$screen-md-max: ($screen-lg - 1);
+
+/* Grid System
+----------------------------------------------- */
+
+$grid-columns: 12;
+$grid-gutter-width: 30px;
+$grid-float-breakpoint: $screen-tablet;
+$container-tablet: ((720px + $grid-gutter-width));
+$container-desktop: ((940px + $grid-gutter-width));
+$container-lg-desktop: ((960px + $grid-gutter-width));
+$container-xl-desktop: ((1170px + $grid-gutter-width));

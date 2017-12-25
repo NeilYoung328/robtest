@@ -1,0 +1,45 @@
+<!-- start Simple Custom CSS and JS -->
+<style type="text/css">
+@media screen and (max-width: 1200px) and (min-width: 768px){
+.footer__menu {
+    text-align: left !important;
+    margin-top: 30px !important;
+    /* padding-left: 12% !important; */
+}
+ 
+
+}
+@media (min-width: 1200px) {
+  .footer__form {
+    top: 28px;
+    left: -16px !important;
+}
+  
+}
+
+@media (min-width: 768px){
+.footer__copyright {
+   margin: 0px 0 0 !important; 
+    text-align: left;
+}
+  .footer__form {-16px !important;}
+}
+
+@media (min-width: 768px){
+#footer .col-sm-7 {
+    width: 49.33333%;
+      margin-bottom: 10px;
+}
+}
+@media (min-width: 992px){
+#footer .col-md-6 {
+    width: 40%;
+}
+  
+  @media (min-width: 1200px){
+.col-lg-4 {
+    width: 33.33333% !important;
+}
+  }
+</style>
+<!-- end Simple Custom CSS and JS -->

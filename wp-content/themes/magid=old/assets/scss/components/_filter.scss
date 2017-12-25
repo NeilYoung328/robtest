@@ -1,0 +1,54 @@
+/* Blog Filter Styles
+----------------------------------------------- */
+
+.filter {
+    background: $tundora;
+
+    &__search {
+        margin-bottom: 30px;
+
+        @include tablet() {
+            margin-bottom: 0;
+        }
+
+        .btn {
+            position: absolute;
+            bottom: 0;
+            right: 15px;
+            top: 0;
+            margin: 0;
+        }
+    }
+}
+
+.search {
+
+    &__form {
+        position: relative;
+    }
+
+    &__label {
+        width: 100%;
+        display: block;
+        padding-right: 68px;
+    }
+
+    &__field {
+        width: 100%;
+        background: $tundora;
+        border: 1px solid $white;
+        font-size: 18px;
+        line-height: 22px;
+        padding: 13px 18px;
+        margin: 0;
+        outline: none;
+        color: $jaffa;
+        appearance: none;
+        -webkit-appearance: none;
+        @include border-radius(0);
+
+        @include placeholder() {
+            color: $jaffa;
+        }
+    }
+}

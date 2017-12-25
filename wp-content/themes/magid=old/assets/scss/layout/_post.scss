@@ -1,0 +1,79 @@
+/* Post Content Styles
+----------------------------------------------- */
+
+.post {
+
+    &__container {
+        padding-bottom: 60px;
+        border-bottom: 1px solid $silver;
+
+        @include tablet() {
+            padding-bottom: 75px;
+        }
+    }
+
+    &__view-all {
+        text-align: center;
+        margin: 45px 0 -15px;
+    }
+}
+
+.entry {
+
+    &__thumb {
+
+        img {
+            @include opacity(0);
+            @include transition($ease);
+        }
+    }
+
+    &__background {
+        display: none;
+        position: absolute;
+        left: 0;
+        width: 48%;
+        top: 0;
+        bottom: 0;
+        background-size: cover;
+        @include opacity(0);
+        @include transition($ease);
+
+        @include desktop() {
+            display: block;
+        }
+    }
+
+    &__post--left {
+
+        @include desktop() {
+            width: 50%;
+            margin-left: 50%;
+        }
+    }
+
+    &__header--post {
+        text-align: center;
+        padding: 30px 0;
+
+        @include tablet() {
+            padding: 45px 0;
+        }
+    }
+
+    &__meta {
+        display: block;
+        font-weight: $medium;
+    }
+
+    &__whitepaper {
+        margin: 45px 0;
+
+        @include tablet() {
+            margin: 60px auto;
+        }
+        @include desktop() {
+            max-width:  80%;
+        }
+    }
+}

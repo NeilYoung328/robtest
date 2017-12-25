@@ -1,0 +1,251 @@
+/* Helper Classes
+----------------------------------------------- */
+
+.clearfix {
+    @include clearfix();
+}
+
+.no-pad-top {
+    padding-top: 0;
+}
+
+.no-pad-bottom {
+    padding-bottom: 0;
+}
+
+.no-gutter-left {
+    padding-left: 0;
+}
+
+.no-gutter-right {
+    padding-right: 0;
+}
+
+.no-gutter {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.pull-right {
+    float: right !important;
+}
+
+.pull-left {
+    float: left !important;
+}
+
+.hide {
+    display: none !important;
+}
+
+.show {
+    display: block !important;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+.affix {
+    position: fixed;
+}
+
+// Hide from screenreaders and browsers
+// Credit: HTML5 Boilerplate
+.hidden {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+// Visibility utilities
+
+.visible-xs {
+    @include responsive-invisibility();
+
+    @media (max-width: $screen-xs-max) {
+        @include responsive-visibility();
+    }
+    &.visible-sm {
+        @media (min-width: $screen-sm) and (max-width: $screen-sm-max) {
+            @include responsive-visibility();
+        }
+    }
+    &.visible-md {
+        @media (min-width: $screen-md) and (max-width: $screen-md-max) {
+            @include responsive-visibility();
+        }
+    }
+    &.visible-lg {
+        @media (min-width: $screen-lg) {
+            @include responsive-visibility();
+        }
+    }
+}
+
+.visible-sm {
+    @include responsive-invisibility();
+    &.visible-xs {
+        @media (max-width: $screen-xs-max) {
+            @include responsive-visibility();
+        }
+    }
+    @media (min-width: $screen-sm) and (max-width: $screen-sm-max) {
+        @include responsive-visibility();
+    }
+    &.visible-md {
+        @media (min-width: $screen-md) and (max-width: $screen-md-max) {
+            @include responsive-visibility();
+        }
+    }
+    &.visible-lg {
+        @media (min-width: $screen-lg) {
+            @include responsive-visibility();
+        }
+    }
+}
+
+.visible-md {
+    @include responsive-invisibility();
+    &.visible-xs {
+        @media (max-width: $screen-xs-max) {
+            @include responsive-visibility();
+        }
+    }
+    &.visible-sm {
+        @media (min-width: $screen-sm) and (max-width: $screen-sm-max) {
+            @include responsive-visibility();
+        }
+    }
+    @media (min-width: $screen-md) and (max-width: $screen-md-max) {
+        @include responsive-visibility();
+    }
+    &.visible-lg {
+        @media (min-width: $screen-lg) {
+            @include responsive-visibility();
+        }
+    }
+}
+
+.visible-lg {
+    @include responsive-invisibility();
+    &.visible-xs {
+        @media (max-width: $screen-xs-max) {
+            @include responsive-visibility();
+        }
+    }
+    &.visible-sm {
+        @media (min-width: $screen-sm) and (max-width: $screen-sm-max) {
+            @include responsive-visibility();
+        }
+    }
+    &.visible-md {
+        @media (min-width: $screen-md) and (max-width: $screen-md-max) {
+            @include responsive-visibility();
+        }
+    }
+    @media (min-width: $screen-lg) {
+        @include responsive-visibility();
+    }
+}
+
+.hidden-xs {
+    @include responsive-visibility();
+    @media (max-width: $screen-xs-max) {
+        @include responsive-invisibility();
+    }
+    &.hidden-sm {
+        @media (min-width: $screen-sm) and (max-width: $screen-sm-max) {
+            @include responsive-invisibility();
+        }
+    }
+    &.hidden-md {
+        @media (min-width: $screen-md) and (max-width: $screen-md-max) {
+            @include responsive-invisibility();
+        }
+    }
+    &.hidden-lg {
+        @media (min-width: $screen-lg) {
+            @include responsive-invisibility();
+        }
+    }
+}
+
+.hidden-sm {
+    @include responsive-visibility();
+    &.hidden-xs {
+        @media (max-width: $screen-xs-max) {
+            @include responsive-invisibility();
+        }
+    }
+    @media (min-width: $screen-sm) and (max-width: $screen-sm-max) {
+        @include responsive-invisibility();
+    }
+    &.hidden-md {
+        @media (min-width: $screen-md) and (max-width: $screen-md-max) {
+            @include responsive-invisibility();
+        }
+    }
+    &.hidden-lg {
+        @media (min-width: $screen-lg) {
+            @include responsive-invisibility();
+        }
+    }
+}
+
+.hidden-md {
+    @include responsive-visibility();
+    &.hidden-xs {
+        @media (max-width: $screen-xs-max) {
+            @include responsive-invisibility();
+        }
+    }
+    &.hidden-sm {
+        @media (min-width: $screen-sm) and (max-width: $screen-sm-max) {
+            @include responsive-invisibility();
+        }
+    }
+    @media (min-width: $screen-md) and (max-width: $screen-md-max) {
+        @include responsive-invisibility();
+    }
+    &.hidden-lg {
+        @media (min-width: $screen-lg) {
+            @include responsive-invisibility();
+        }
+    }
+}
+
+.hidden-lg {
+    @include responsive-visibility();
+    &.hidden-xs {
+        @media (max-width: $screen-xs-max) {
+            @include responsive-invisibility();
+        }
+    }
+    &.hidden-sm {
+        @media (min-width: $screen-sm) and (max-width: $screen-sm-max) {
+            @include responsive-invisibility();
+        }
+    }
+    &.hidden-md {
+        @media (min-width: $screen-md) and (max-width: $screen-md-max) {
+            @include responsive-invisibility();
+        }
+    }
+    @media (min-width: $screen-lg) {
+        @include responsive-invisibility();
+    }
+}
+
+// Print utilities
+.visible-print {
+    @include responsive-invisibility();
+}
+
+@media print {
+    .visible-print {
+        @include responsive-visibility();
+    }
+    .hidden-print {
+        @include responsive-invisibility();
+    }
+}

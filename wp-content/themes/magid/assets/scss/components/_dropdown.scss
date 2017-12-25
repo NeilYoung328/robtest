@@ -1,0 +1,128 @@
+/* Dropdown Styles
+----------------------------------------------- */
+
+.selectize-control.single {
+    margin-bottom: 30px;
+
+    &.gfield_select {
+        margin-bottom: 0;
+
+        .selectize-input {
+            padding: 14px 18px 13px;
+            display: block;
+
+            @include tablet() {
+                max-width: none;
+            }
+
+            input[type="text"] {
+                display: inline-block;
+            }
+        }
+    }
+
+    .selectize-input {
+        line-height: 1.2;
+        padding: 14px 25px 13px;
+        display: inline-block;
+        border: 1px solid $tundora;
+        width: 100%;
+        text-align: left;
+        outline: none;
+        position: relative;
+        font-size: 18px;
+        color: $jaffa;
+
+        @include tablet() {
+            max-width: 375px;
+        }
+
+        input[type="text"] {
+            display: none;
+        }
+
+        &:focus {
+            cursor: pointer;
+        }
+
+        &:after {
+            content: "";
+            position: absolute;
+            right: 22px;
+            top: 50%;
+            height: 16px;
+            width: 10px;
+            background: url('../../assets/images/arrow-svg.svg') no-repeat center center;
+            background-size: cover;
+            transform: translateY(-50%);
+        }
+
+        &.dropdown-active:after {
+            @include rotate(90deg);
+            top: 17px;
+        }
+
+        &.magid__select--gform {
+            margin-bottom: 0;
+
+            @include tablet() {
+                max-width: none;
+            }
+        }
+    }
+
+    .selectize-dropdown {
+        position: absolute;
+        border: 1px solid $tundora;
+        background: $alabaster;
+        color: $tundora;
+        padding: 7px 0;
+        right: 30px;
+        z-index: 9999;
+        overflow: hidden;
+        font-size: 18px;
+        line-height: 1.5;
+        text-align: left;
+
+        .option {
+            display: block;
+            padding: 8px 25px;
+            cursor: pointer;
+
+            &.active,
+            &:hover {
+                background: darken($alabaster, 5%);
+                color: $jaffa;
+            }
+        }
+    }
+
+    .selectize-dropdown-content {
+        max-height: 300px;
+    }
+
+    &.filter__terms-select {
+        margin-bottom: 0;
+
+        .selectize-input {
+            display: block;
+            background: transparent;
+            border-color: $white;
+            padding: 13px 18px;
+            line-height: 22px;
+
+            @include tablet() {
+                max-width: none;
+            }
+
+            &:after {
+                background: url('../../assets/images/arrow-white-svg.svg') no-repeat center center;
+                background-size: cover;
+            }
+        }
+
+        .selectize-dropdown {
+            border-color: $white;
+        }
+    }
+}

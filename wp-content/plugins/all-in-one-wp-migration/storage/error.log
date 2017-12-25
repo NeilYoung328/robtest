@@ -1,0 +1,3 @@
+Dec 20 2017 15:58:56
+{"type":2,"message":"unlink(\/home\/magid\/webapps\/october_2017\/wp-content\/temp-write-test-1513785536): No such file or directory","file":"\/home\/magid\/webapps\/october_2017\/wp-admin\/includes\/file.php","line":1494}
+

@@ -1,0 +1,183 @@
+/* Module: Icon Grid
+----------------------------------------------- */
+
+.module-icon-grid {
+    background: $white;
+    margin-top: -1px;
+    padding-top: 1px;
+}
+
+.grid-items {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: stretch;
+    align-items: stretch;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    -webkit-align-content: stretch;
+    align-content: stretch;
+}
+
+.grid-item {
+    text-align: center;
+    border: 1px solid $silver;
+    margin: -1px -1px 0 0;
+    -webkit-flex: 0 1 100%;
+    flex: 0 1 100%;
+    padding: 22px 15px 36px;
+    position: relative;
+
+    @include mobile() {
+        -webkit-flex: 0 1 (100%/2);
+        flex: 0 1 (100%/2);
+    }
+
+    @include tablet() {
+        -webkit-flex: 0 1 (100%/3);
+        flex: 0 1 (100%/3);
+    }
+
+    @include desktop() {
+        -webkit-flex: 0 1 (100%/5);
+        flex: 0 1 (100%/5);
+    }
+
+    @include desktop-lg() {
+        padding: 25px 15px 45px;
+    }
+
+    &-icon {
+        position: relative;
+        height: 65px;
+        width: 100%;
+        display: block;
+        margin-bottom: 18px;
+
+        img {
+            height: 100%;
+            width: auto;
+            padding: 2px 0;
+        }
+
+        .icon {
+            position: absolute;
+            top: 50%;
+            @include translateY(-50%);
+            display: block;
+            margin: 0 auto;
+            text-align: center;
+            fill: $jaffa;
+            max-height: 65px;
+            width: 100%;
+        }
+    }
+
+    &-title {
+        font-size: 15px;
+        font-weight: 700;
+        display: block;
+        line-height: 1.3;
+        min-height: 38px;
+        color: $tundora;
+    }
+
+    &-description {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    &:after {
+        z-index: 2;
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background: $jaffa;
+        @include opacity(0);
+        @include transition($ease);
+    }
+
+    &--default {
+        z-index: 1;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        @include translateY(-50%);
+    }
+
+    &--hover {
+        position: relative;
+        z-index: 3;
+        visibility: hidden;
+        color: $white;
+        //@include scale(0);
+        @include opacity(0);
+        @include transition($ease);
+
+        .grid-item-icon {
+            margin-bottom: 12px;
+
+            .icon {
+                fill: $white;
+            }
+        }
+
+        .grid-item-title {
+            min-height: 0;
+            margin-bottom: 5px;
+            color: $white;
+        }
+    }
+
+    .noTouch &:hover,
+    &.grid-item--is-active {
+        &:after {
+            @include opacity(1);
+        }
+
+        .grid-item--hover {
+            visibility: visible;
+            //@include scale(1);
+            @include opacity(1);
+        }
+    }
+}
+
+.grid-item-icon .icon {
+    &-sales-tag {
+        max-height: 61px;
+    }
+    &-business-to-business {
+        max-height: 55px;
+    }
+    &-gaming {
+        max-height: 45px;
+    }
+    &-cart {
+        max-height: 53px;
+    }
+    &-airplane {
+        max-height: 63px;
+    }
+    &-devices {
+        max-height: 62px;
+    }
+    &-credit-cards {
+        max-height: 60px;
+    }
+    &-newspaper {
+        max-height: 58px;
+    }
+    &-car {
+        max-height: 46px;
+    }
+    &-trophy {
+        max-height: 61px;
+    }
+    &-movies {
+        max-height: 57px;
+    }
+}

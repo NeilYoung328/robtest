@@ -1,0 +1,141 @@
+/* Footer
+----------------------------------------------- */
+
+.footer {
+    position: relative;
+    color: $white;
+    background: $tundora;
+    padding: 42px 0 25px;
+    margin-top: -1px;
+    line-height: 1;
+
+    a {
+
+        &:hover {
+            color: $white;
+        }
+    }
+
+    &__menu {
+        text-align: center;
+
+        a {
+            display: block;
+            padding: 10px 0;
+        }
+
+        @include tablet() {
+            text-align: left;
+
+            .menu-item {
+                display: inline-block;
+                margin: 0 15px 0 0;
+            }
+
+            a {
+                padding: 5px 0 0;
+                line-height: 65px;
+            }
+        }
+
+        @include desktop-lg() {
+            margin-top: 15px;
+            text-align: center;
+
+            .menu-item {
+                margin: 0 20px;
+            }
+        }
+    }
+
+    &__branding {
+        margin-top: 15px;
+        text-align: center;
+
+        img {
+            max-height: 70px;
+            width: auto;
+            height: 100%;
+            display: inline-block;
+        }
+
+        &-link {
+            display: block;
+            margin: 30px 0 0 0;
+        }
+
+        @include tablet() {
+            margin-top: 0;
+            text-align: right;
+
+            &-link {
+                vertical-align: middle;
+                display: inline-block;
+                margin: 0 0 0 15px;
+            }
+        }
+
+        @include desktop-lg() {
+            margin-top: 15px;
+        }
+    }
+
+    &__copyright {
+        margin: 30px 0 0;
+        font-size: 12px;
+        text-align: center;
+        line-height: 1.4;
+
+        span {
+            display: inline-block;
+            margin: 0 8px;
+        }
+
+        a {
+            text-transform: uppercase;
+        }
+
+        @include tablet() {
+            margin: 20px 0 0;
+            text-align: left;
+        }
+    }
+
+    &__form-action {
+        position: relative;
+    }
+
+    &__form {
+        line-height: 48px;
+        bottom: 0;
+        top: 0;
+        position: relative;
+        text-align: center;
+        margin-bottom: 15px;
+
+        @include tablet() {
+            padding-right: 60px;
+            text-align: left;
+            margin-bottom: 0;
+        }
+
+        @include desktop-lg() {
+            top: 28px;
+        }
+
+        .btn {
+            right: 0;
+            padding: 14px 17px 12px;
+            max-width: 75px;
+            display: block;
+            margin: 0 auto;
+
+            @include tablet() {
+                display: inline-block;
+                position: absolute;
+                top: 50%;
+                @include translateY(-50%);
+            }
+        }
+    }
+}

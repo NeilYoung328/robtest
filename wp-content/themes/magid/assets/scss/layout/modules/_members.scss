@@ -1,0 +1,79 @@
+/* Module: Members
+----------------------------------------------- */
+
+.module-members {
+    border-bottom: 1px solid $silver;
+    padding-bottom: 30px;
+
+    @include tablet() {
+        padding-bottom: 45px;
+    }
+}
+
+.member {
+
+    &-item {
+        padding: 0;
+        position: relative;
+        font-size: 14px;
+        line-height: 1.2;
+        border: 1px solid $white;
+
+        img {
+            display: block;
+        }
+    }
+
+    &__info {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 8px 10px;
+        background: rgba(255, 255, 255, 0.9);
+
+        @include tablet() {
+            padding: 8px 15px;
+        }
+    }
+
+    &__name {
+        font-weight: 700;
+        display: block;
+        margin-bottom: 3px;
+    }
+
+    &__position {
+        color: $jaffa
+    }
+
+    &__linkedin {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        @include translateY(-50%);
+
+        .icon {
+            display: block;
+            fill: $jaffa;
+            width: 26px;
+            height: 26px;
+            @include transition($ease);
+        }
+
+        &:hover .icon {
+            fill: $tundora;
+        }
+
+        @include tablet() {
+            right: 16px;
+        }
+    }
+}
+
+.members--loading {
+    width: 48px;
+    height: 48px;
+    margin: 48px auto;
+    display: block;
+}

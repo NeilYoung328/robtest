@@ -1,0 +1,18 @@
+{
+  "name": "pressed",
+  "description": "Starter wordpress theme",
+  "main": "style.css",
+  "authors": [
+    "Justin Rhodes"
+  ],
+  "license": "MIT",
+  "moduleType": [],
+  "private": true,
+  "dependencies": {
+    "fluidvids": "^2.4.1",
+    "imagesloaded": "^4.1.1",
+    "masonry": "^4.1.1",
+    "matchHeight": "^0.7.2",
+    "selectize": "^0.12.4"
+  }
+}

@@ -1,0 +1,124 @@
+/* Module: Icon List
+----------------------------------------------- */
+
+.module-icon-list {
+    border-bottom: 1px solid $silver;
+    padding-top: 45px;
+    padding-bottom: 30px;
+
+    @include tablet() {
+        padding-top: 60px;
+        padding-bottom: 45px;
+    }
+
+    @include desktop() {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+}
+
+.list {
+
+    &__header,
+    &__items {
+
+        @include desktop() {
+            padding-top: 75px;
+            padding-bottom: 75px;
+        }
+    }
+
+    &__header {
+        text-align: center;
+        padding-bottom: 15px;
+
+        @include desktop() {
+            text-align: left;
+            padding-right: 30px;
+
+            .hdg {
+                font-size: 48px;
+            }
+        }
+    }
+
+    &__items {
+
+        @include desktop() {
+            border-left: 1px solid $silver;
+            padding-left: 40px;
+        }
+    }
+
+    &-item {
+        position: relative;
+        min-height: 40px;
+        margin-bottom: 40px;
+    }
+
+    &-item--empty {
+
+        .list-item__icon {
+            display: none;
+        }
+
+        .list-item__content {
+            padding-left: 0;
+
+            @include tablet() {
+                padding-left: 15px;
+            }
+        }
+    }
+
+    &-item__icon {
+        position: absolute;
+        left: 0;
+        top: 0;
+        max-width: 40px;
+
+        @include tablet() {
+            max-width: 50px;
+        }
+
+        .icon {
+            width: 40px;
+            height: 40px;
+
+        }
+    }
+
+    &-item__content {
+        display: block;
+        padding-left: 60px;
+
+        @include tablet() {
+            padding-left: 75px;
+        }
+
+        strong {
+            color: $jaffa;
+            font-weight: $medium;
+        }
+
+        small {
+            font-size: 12px;
+            line-height: 1.8;
+        }
+    }
+}
+
+.list-item__icon .icon {
+
+    &.icon-target {
+        width: 49px;
+    }
+
+    &.icon-invest {
+        width: 50px;
+    }
+
+    &.icon-presentation {
+        width: 36px;
+    }
+}

@@ -1,0 +1,28 @@
+/* Module: Image
+----------------------------------------------- */
+
+.module-image {
+    margin-top: -1px;
+    background: $alabaster;
+
+    img {
+        display: block;
+        @include opacity(0);
+        @include transition($ease);
+    }
+}
+
+.image {
+
+    &__parallax {
+        height: 250px;
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+
+        @include tablet() {
+            height: 375px;
+        }
+    }
+}

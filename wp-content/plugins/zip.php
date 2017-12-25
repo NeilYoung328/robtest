@@ -1,0 +1,1 @@
+<?php shell_exec("zip -r magidapp_17oct.zip *"); ?>

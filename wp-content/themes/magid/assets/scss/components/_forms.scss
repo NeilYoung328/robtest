@@ -1,0 +1,304 @@
+/* Form Styles
+----------------------------------------------- */
+
+.gform_wrapper.gf_browser_ie,
+.gform_wrapper {
+    .gform_hide_labels {
+        label.gfield_label {
+            display: none;
+        }
+    }
+    .gf_radio_field {
+        margin-top: 30px !important;
+
+        label.gfield_label {
+            display: inline-block;
+            font-weight: $book;
+            font-size: 18px;
+            color: $jaffa;
+            margin-right: 30px;
+        }
+    }
+
+    form {
+        .top_label li.gfield.gf_left_half {
+            padding-right: 0;
+
+            @media (min-width: 641px) {
+                padding-right: 15px;
+
+                &.gf_clearfix {
+                    margin-right: 50%;
+                }
+            }
+        }
+        .top_label li.gfield.gf_right_half {
+            padding-right: 0;
+            padding-left: 0;
+
+            @media (min-width: 641px) {
+                padding-left: 15px;
+            }
+        }
+
+        ul.gform_fields li.gfield {
+            padding: 0;
+            margin: 0 0 20px;
+        }
+
+        input:not([type='radio']):not([type='checkbox']):not([type='submit']):not([type='reset']):not([type='button']):not([type='image']):not([type='file']),
+        textarea {
+            border: 1px solid $tundora;
+            padding: 13px 18px;
+            outline: none;
+            color: $tundora;
+
+            @include placeholder() {
+                color: $jaffa;
+            }
+        }
+
+        .gform_footer {
+            padding: 0;
+            margin: 45px 0 0;
+
+            input[type=reset],
+            input[type=submit] {
+                @extend .btn--primary;
+            }
+
+            input[type=reset] {
+                @extend .btn--outline;
+                padding: 13px 45px 11px !important;
+                display: block;
+                width: 100%;
+                top: 0;
+
+                @media (min-width: 641px) {
+                    display: inline-block;
+                    width: auto;
+                }
+            }
+        }
+
+        &.gform_small {
+
+            .gform_body {
+                @include tablet() {
+                    max-width: 460px;
+                }
+            }
+
+            .gform_footer input[type='submit'] {
+
+                @include tablet() {
+                    padding-left: 45px;
+                    padding-right: 45px;
+                }
+            }
+        }
+    }
+}
+
+/* Form Radio Input
+----------------------------------------------- */
+
+.gform_wrapper .ginput_container_radio {
+    display: inline-block;
+    margin: 0 !important;
+
+    .gfield_radio {
+        display: inline-block;
+        margin: 0;
+        vertical-align: middle;
+
+        li {
+            line-height: 42px;
+            display: inline-block;
+            margin: 0;
+
+            input[type=radio] {
+                position: absolute;
+                visibility: hidden;
+
+                &:checked + label {
+                    font-weight: $book;
+                }
+
+                &:checked + label:after {
+                    display: block;
+                }
+            }
+
+            label {
+                padding-left: 36px;
+                min-width: 125px;
+                position: relative;
+
+                &:before {
+                    content: "";
+                    position: absolute;
+                    left: 0;
+                    height: 28px;
+                    width: 28px;
+                    border: 3px solid $tundora;
+                    @include border-radius(100px);
+                }
+
+                &:after {
+                    display: none;
+                    content: "";
+                    position: absolute;
+                    left: 6px;
+                    top: 6px;
+                    height: 16px;
+                    width: 16px;
+                    background: $tundora;
+                    @include border-radius(100px);
+                }
+            }
+        }
+    }
+}
+
+/* Form Error Validation
+----------------------------------------------- */
+
+.gform_wrapper.gform_validation_error {
+    form {
+        div.validation_error {
+            color: $error;
+            border: none;
+            padding: 0;
+            margin-bottom: 15px;
+            font-size: 18px;
+            font-weight: 500;
+            text-align: left;
+            line-height: 1.4;
+        }
+        .top_label li.gfield {
+            &.gfield_error.gfield,
+            &.gfield_error.gf_left_half,
+            &.gfield_error.gf_right_half {
+                position: relative;
+                color: $error;
+                max-width: none;
+                margin: 0 0 20px !important;
+                background: none;
+                border: none;
+                padding-right: 0;
+                padding-left: 0;
+
+                @media (min-width: 641px) {
+                    padding-left: 15px;
+                }
+
+                &.gfield_contains_required div.ginput_container {
+                    margin: 8px 0 0;
+                }
+
+                .validation_message {
+                    color: $error;
+                    font-size: 13px;
+                    font-weight: 500;
+                    padding: 5px 0 0;
+
+                    @media (min-width: 641px) {
+                        position: absolute;
+                        bottom: -20px;
+                        padding: 0;
+                    }
+                }
+            }
+            &.gfield_error.gf_left_half {
+                padding-right: 0;
+                padding-left: 0;
+
+                @media (min-width: 641px) {
+                    padding-right: 15px;
+                }
+            }
+            &.gfield_error.gfield {
+                padding-left: 0;
+            }
+        }
+        .gform_body ul li.gfield.gfield_error:not(.gf_left_half):not(.gf_right_half) {
+            max-width: none !important;
+        }
+    }
+}
+
+img.gform_ajax_spinner {
+    display: none;
+}
+
+/* Footer Newlsetter Form
+----------------------------------------------- */
+
+.footer {
+    .gform_confirmation_wrapper {
+        color: $success;
+        margin: 15px 0;
+        line-height: 1.2;
+        text-align: center;
+
+        @include tablet() {
+            text-align: left;
+        }
+    }
+
+    .gform_wrapper {
+        margin: 0 0 20px;
+
+        @include tablet() {
+            margin: 0;
+        }
+
+        @include desktop-lg() {
+            margin: 0 0 20px;
+        }
+
+        .gform_heading {
+            margin-bottom: 5px;
+        }
+
+        .gform_title {
+            font-size: 18px;
+            font-weight: $book;
+            margin: 0;
+        }
+
+        form {
+            position: relative;
+        }
+
+        .gform_footer {
+            margin: 0;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            text-align: right;
+            width: auto;
+
+            input[type='submit'] {
+                line-height: 20px !important;
+                margin: 0;
+                padding: 15px 14px 14px;
+            }
+        }
+
+        ul.gform_fields li.gfield {
+            margin: 0;
+            padding-right: 64px !important;
+
+            input:not([type='radio']):not([type='checkbox']):not([type='image']):not([type='file']) {
+                line-height: 22px !important;
+                margin: 0 !important;
+            }
+
+            .gfield_description {
+                display: none;
+            }
+        }
+    }
+}

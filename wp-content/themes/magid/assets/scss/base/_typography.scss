@@ -1,0 +1,79 @@
+/* Font Styles
+----------------------------------------------- */
+
+.hdg {
+    line-height: 1.1;
+
+    &--1 {
+        line-height: 1;
+        font-size: 48px;
+
+        @include desktop() {
+            font-size: 64px;
+        }
+    }
+
+    &--2 {
+        font-size: 42px;
+
+        @include desktop() {
+            font-size: 56px;
+        }
+    }
+
+    &--3 {
+        font-size: 36px;
+        line-height: 1;
+
+        @include desktop() {
+            font-size: 40px;
+        }
+    }
+
+    &--4 {
+        font-size: 32px;
+
+        @include desktop() {
+            font-size: 36px;
+        }
+    }
+
+    &--5 {
+        font-size: 20px;
+
+        @include tablet() {
+            font-size: 24px;
+        }
+    }
+
+    &--6 {
+
+        @include tablet() {
+            font-size: 20px;
+        }
+    }
+
+    &--white {
+        color: $white;
+    }
+
+    &--dark {
+        color: $tundora;
+    }
+
+    &--orange {
+        color: $jaffa;
+    }
+
+    &--mb-15 {
+        margin-bottom: 15px;
+    }
+
+    &--mb-30 {
+        margin-bottom: 30px;
+    }
+
+    &--medium {
+        font-weight: $medium;
+    }
+}

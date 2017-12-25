@@ -1,0 +1,235 @@
+/* WYSIWYG Content
+----------------------------------------------- */
+
+.entry {
+
+    &__content {
+        h1, h2, h3, h4, h5, h6 {
+            display: block;
+            line-height: 1.2;
+        }
+        h1 {
+            font-size: 42px;
+
+            @include tablet() {
+                font-size: 48px;
+            }
+        }
+        h2 {
+            font-size: 36px;
+
+            @include tablet() {
+                font-size: 42px;
+            }
+        }
+        h3 {
+            font-size: 28px;
+
+            @include tablet() {
+                font-size: 32px;
+            }
+        }
+        h4 {
+            font-size: 24px;
+
+            @include tablet() {
+                font-size: 28px;
+            }
+        }
+        h5 {
+            line-height: 1.25;
+            font-size: 20px;
+
+            @include tablet() {
+                font-size: 24px;
+            }
+        }
+        h6 {
+            font-size: 18px;
+            font-weight: $demi;
+
+            @include tablet() {
+                font-size: 20px;
+            }
+        }
+        p,
+        address,
+        pre,
+        hr,
+        ul,
+        ol,
+        dl,
+        dd,
+        table {
+            line-height: 1.5;
+            margin-bottom: 25px;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+        strong,
+        dt,
+        b {
+            font-weight: bold;
+        }
+        em {
+            font-style: italic;
+        }
+        table,
+        th,
+        td {
+            border: 1px solid #eaeaea;
+        }
+        table {
+            width: 100%;
+            margin: 0 0 1.6em;
+            table-layout: fixed; /* Prevents HTML tables from becoming too wide */
+            border-spacing: 0;
+            border-collapse: separate;
+            border-width: 1px 0 0 1px;
+        }
+        caption,
+        th,
+        td {
+            text-align: left;
+        }
+        th {
+            font-weight: bold;
+            border-width: 0 1px 1px 0;
+        }
+        td {
+            border-width: 0 1px 1px 0;
+        }
+        th,
+        td {
+            padding: .4em;
+        }
+        ol,
+        ul {
+            margin-left: 35px;
+        }
+        ol {
+            li {
+                list-style-type: decimal;
+                margin-bottom: 5px;
+                ol {
+                    margin-bottom: 0;
+                }
+            }
+        }
+        ul {
+            li {
+                list-style-type: disc;
+                margin-bottom: 5px;
+
+                ul {
+                    margin-bottom: 0;
+                }
+            }
+        }
+        blockquote {
+            font-size: 32px;
+            line-height: 1.1;
+            margin: 15px auto;
+
+            @include tablet() {
+                font-size: 48px;
+                margin: 30px auto;
+            }
+
+            @include desktop() {
+                max-width: 80%;
+            }
+
+            p {
+                line-height: 1.1;
+            }
+        }
+        img {
+            max-width: 100%;
+            width: auto;
+            height: auto;
+        }
+        .alignleft {
+            width: auto;
+            height: auto;
+            margin: 0 15px 15px 0;
+            float: left;
+        }
+        .alignright {
+            float: right;
+            margin: 0 0 15px 15px;
+        }
+        .aligncenter {
+            margin: 0 auto 30px;
+            display: block;
+        }
+        .alignnone {
+            margin-bottom: 25px;
+        }
+        .wp-caption {
+            max-width: 100% !important;
+        }
+        .wp-caption-text {
+            font-size: 14px;
+            font-weight: $demi;
+        }
+        .wp-embedded-content {
+            display: block;
+            margin: 0 auto;
+        }
+        address {
+            p {
+                margin-bottom: 0;
+            }
+        }
+        pre {
+            font-family: monospace;
+            display: block;
+            margin: 15px 0;
+            padding: 15px;
+            white-space: pre;
+            background: #eee;
+        }
+        sub,
+        sup {
+            font-size: 10px;
+            line-height: 0;
+            position: relative;
+            vertical-align: baseline;
+        }
+        sup {
+            top: -.5em;
+        }
+        sub {
+            bottom: -.25em;
+        }
+
+        .entry__list {
+            display: block;
+            margin: 0 auto 25px;
+            float: left;
+            width: 100%;
+
+            ul {
+                margin: 0;
+                text-align: center;
+                padding: 0;
+                list-style-type: none;
+
+                li {
+                    list-style-type: none;
+                    color: $jaffa;
+                    line-height: 1.8;
+                }
+            }
+
+            @include desktop() {
+                padding-left: 45px;
+                padding-right: 45px;
+                margin-bottom: 0;
+            }
+        }
+    }
+}

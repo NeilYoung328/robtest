@@ -1,0 +1,201 @@
+/* Site Navigation styles
+----------------------------------------------- */
+
+.nav__toggle {
+    background: $white;
+    position: relative;
+    line-height: 1;
+
+    .hamburger {
+        padding-left: 18px;
+        padding-right: 18px;
+
+        @include tablet() {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+    }
+
+    @include tablet() {
+        top: 15px;
+        max-width: 106px;
+    }
+
+    @include desktop() {
+        text-align: center;
+        max-width: none;
+
+        .hamburger {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+    }
+
+    .icon {
+        position: absolute;
+        height: 24px;
+        width: 24px;
+        left: 25px;
+        transform: rotate(-90deg);
+        top: -2px;
+        @include transition(all 0.1s ease-in-out);
+    }
+
+    &--alt {
+        background: $thunder;
+
+        .icon {
+            fill: $white;
+            transform: none;
+            position: relative;
+            left: auto;
+            height: 12px;
+            width: 34px;
+            vertical-align: middle;
+
+            @include desktop() {
+                width: 40px;
+            }
+        }
+    }
+
+    &--back {
+        display: block;
+        color: $white;
+        padding: 25px 0 25px 15px;
+
+
+        @include tablet() {
+            text-align: center;
+            padding: 25px 0;
+        }
+    }
+
+    .toggle__alt-label {
+        font-weight: $demi;
+        display: inline-block;
+        margin-left: 5px;
+        vertical-align: middle;
+        text-transform: uppercase;
+        line-height: 1;
+        position: relative;
+        top: -2px;
+        font-size: 12px;
+
+        @include desktop() {
+            margin-left: 8px;
+        }
+    }
+}
+
+.nav__utility {
+    left: 0;
+    @include translateX(0);
+    @include transition(transform 0.35s cubic-bezier(0.645, 0.045, 0.355, 1));
+}
+
+.nav__tray {
+    position: fixed;
+    width: 100%;
+    background: $white;
+    text-align: center;
+    top: 66px;
+    bottom: 0;
+    left: 0;
+    padding: 30px 15px;
+    z-index: 99;
+    overflow: scroll;
+    border-top: 1px solid $mine-shaft;
+    @include translateX(-100%);
+    @include transition(transform 0.35s cubic-bezier(0.645, 0.045, 0.355, 1));
+
+    @include tablet() {
+        top: 0;
+        padding: 45px;
+        width: 375px;
+        text-align: left;
+        @include translateX(-375px);
+        border-top: none;
+    }
+
+    &--active {
+        overflow: hidden;
+    }
+}
+
+.nav__overlay {
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: $black;
+    display: none;
+    @include opacity(0);
+    @include transition(opacity 0.35s cubic-bezier(0.645, 0.045, 0.355, 1));
+
+    &--is-active {
+        position: fixed;
+        z-index: 98;
+        @include opacity(0.50);
+    }
+
+    @include tablet() {
+        display: block;
+    }
+}
+
+.nav__menu {
+    font-size: 20px;
+    text-transform: uppercase;
+    margin-bottom: 45px;
+
+    a {
+        display: block;
+        color: $tundora;
+        margin: 4px 0;
+        padding: 8px 0;
+
+        &:hover {
+            color: $jaffa;
+        }
+    }
+
+    .current-menu-item a {
+        color: $jaffa;
+    }
+
+    @include tablet() {
+        margin-bottom: 90px;
+    }
+}
+
+.nav__logo {
+    display: block;
+    margin-bottom: 25px;
+
+    img {
+        max-height: 50px;
+        width: auto;
+    }
+}
+
+.nav__tagline {
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.admin-bar {
+
+    .nav__tray {
+        top: 112px;
+
+        @include tablet() {
+            top: 46px;
+        }
+
+        @media (min-width: 783px) {
+            top: 32px;
+        }
+    }
+}

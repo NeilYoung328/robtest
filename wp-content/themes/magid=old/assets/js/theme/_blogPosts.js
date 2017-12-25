@@ -1,0 +1,148 @@
+/**
+ *  Initialize blogPosts
+ */
+
+var blogPosts = (function ($) {
+
+    var pub = {}; // public facing functions
+    var blogPosts = $('.mentions--blog');
+    var blogPostsToggle = $('.mentions__toggle');
+
+    /**
+     * Init JS Module
+     */
+    pub._init = function () {
+        if (!blogPosts.length > 0) {
+            return;
+        }
+
+        pub._loadMorePostsToggle();
+    };
+
+    /**
+     * Listen for toggle posts button to be clicked, then grab more posts
+     */
+    pub._loadMorePostsToggle = function () {
+        blogPostsToggle.on('click', function (e) {
+            e.preventDefault();
+            $(this).addClass('btn--loading');
+            $(this).append('<img src="' + wpApiSettings.theme_path + 'assets/images/loading-three-dots.svg"/>');
+
+            pub._loadMorePosts();
+        });
+    };
+
+    /**
+     * Return toggle button to default load state
+     *
+     * @param text
+     */
+    pub._defaultToggleState = function (text) {
+        blogPostsToggle.removeClass('btn--loading');
+        blogPostsToggle.html(text);
+    };
+
+    /**
+     * Ajax request for more posts
+     */
+    pub._loadMorePosts = function () {
+        var currentPage = blogPosts.attr('data-page'),
+            postsPerPage = blogPosts.attr('data-posts'),
+            search = blogPosts.attr('data-search'),
+            term = blogPosts.attr('data-term'),
+            nextPage = parseInt(currentPage) + 1;
+
+        var data = {
+            page: nextPage,
+            per_page: postsPerPage,
+            search: search
+        };
+
+        if (term && term > 0) {
+            data.categories = term;
+        }
+
+        $.ajax({
+            url: wpApiSettings.root + 'wp/v2/posts',
+            method: 'GET',
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('X-WP-Nonce', wpApiSettings.nonce);
+            },
+            data: data
+        }).done(function (response) {
+            if (response.length > 0) {
+                pub._renderPostItems(response);
+                blogPosts.attr('data-page', nextPage);
+                return true;
+            }
+            pub._defaultToggleState('No Posts Found');
+            blogPostsToggle.addClass('disabled');
+        });
+    };
+
+    /**
+     * Loop through post results and render markup
+     *
+     * @param data
+     */
+    pub._renderPostItems = function (data) {
+        $.each(data, function (index, element) {
+            var params = magidPostParams[index];
+            var html = pub._articleItemMarkup(element, params.bg, params.layout, params.meta);
+            var appendedItem = $(html);
+
+            blogPosts.append(appendedItem);
+        });
+
+        pub._defaultToggleState('Load More');
+    };
+
+    /**
+     * blog posts item markup template
+     *
+     * @param item
+     * @param background
+     * @param layout
+     * @param meta
+     *
+     * @returns {string}
+     */
+    pub._articleItemMarkup = function (item, background, layout, meta) {
+        var title = item.title.rendered;
+        var target = '';
+        if ('top' === layout) {
+            title = item.mention.title;
+        }
+
+        // check for external resource
+        if (typeof item.mention.external !== 'undefined') {
+            item.link = item.mention.external.url;
+            item.mention.excerpt = item.mention.external.excerpt;
+            target = 'target="_blank"';
+        }
+
+        return '<div class="mention mention--' + layout + '" style="background: ' + background + '">' +
+            ( 'top' === layout ? '<div class="entry__thumb"><a rel="bookmark" href="' + item.link + '"><img src="' + item.thumbnail.sm + '" itemprop="image" style="opacity: 1;"></a></div>' : '' ) +
+            ( 'left' === layout ?  '<a rel="bookmark" href="' + item.link + '" class="entry__background" style="background-image: url(' + item.thumbnail.md + '); opacity: 1;"></a>' : '' ) +
+            '<article id="post-' + item.id + '" class="entry entry__post--' + layout + ' post-' + item.id + '">' +
+            '<div class="entry__meta">' +
+            '<div class="meta__date" style="color:' + meta + ';"><span class="meta__author">By ' + item.mention.author + '</span>' + item.mention.date + '</div>' +
+            '<span class="entry-terms category" itemprop="articleSection">' + item.mention.terms + '</span>' +
+            '</div>' +
+            '<header class="entry__header">' +
+            '<h2 class="hdg hdg--3 hdg--medium">' +
+            '<a rel="bookmark" href="' + item.link + '" ' + target + '>' + title + '</a> ' +
+            '</h2>' +
+            '</header>' 
+            ( 'none' === layout ? '<div class="entry__excerpt">' + item.mention.excerpt + '</div>' : '' ) +
+            '<a class="entry_read-more" href="' + item.link + '" style="color:' + meta + ';" ' + target + '>' +
+            '<svg class="icon icon-arrow" style="fill: ' + meta + ';"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow"></use></svg>' +
+            'Read More' +
+            '</a>' +
+            '</article>' +
+            '</div>';
+    };
+
+    return pub;
+
+})(jQuery);

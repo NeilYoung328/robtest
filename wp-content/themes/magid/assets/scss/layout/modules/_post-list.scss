@@ -1,0 +1,118 @@
+/* Module: Post List
+----------------------------------------------- */
+
+.module-post-list {
+    border-bottom: 1px solid $silver;
+}
+
+.list__posts {
+    padding: 60px 0 30px;
+    float: left;
+    position: relative;
+    width: 100%;
+
+    &:after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 0;
+        bottom: 0;
+        width: 1px;
+        background: $silver;
+        display: none;
+        z-index: 1;
+        margin-left: -1px;
+    }
+
+    @include tablet() {
+        padding: 75px 0 30px;
+
+        &:after {
+            display: block;
+        }
+
+        &--load-more {
+            padding-bottom: 100px;
+        }
+    }
+
+    &-load {
+        margin-bottom: 45px;
+        text-align: center;
+
+        @include tablet() {
+            position: absolute;
+            bottom: 45px;
+            left: 50%;
+            z-index: 3;
+            margin-bottom: 0;
+            @include translateX(-50%);
+        }
+    }
+}
+
+.list__post {
+    background: $white;
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 30px;
+    width: 100%;
+
+    @include tablet() {
+        padding: 30px;
+        margin-bottom: 60px;
+        width: 50%;
+
+        &:nth-child(2) {
+            margin-top: 125px;
+        }
+    }
+
+    .section {
+        display: block;
+        margin-bottom: 25px;
+
+        .hdg {
+            margin-bottom: 5px;
+        }
+
+        &--large {
+            margin-bottom: 45px;
+
+            @include tablet() {
+                margin-bottom: 60px;
+            }
+        }
+    }
+
+    .section__institute-description {
+        margin-bottom: 45px;
+    }
+
+    &--course {
+        font-size: 16px;
+        line-height: 1.9;
+
+        li:before {
+            content: "\2022";
+            display: inline-block;
+            margin-right: 5px;
+        }
+    }
+}
+
+.list__posts-toggle {
+
+    &.disabled {
+        pointer-events: none;
+        background: $alabaster;
+    }
+}
+
+.institute__meta {
+    font-size: 16px;
+    font-weight: $medium;
+    line-height: 1.8;
+    margin-top: 8px;
+    display: block;
+}

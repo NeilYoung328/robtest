@@ -1,0 +1,68 @@
+/* Header Styles
+----------------------------------------------- */
+
+.header {
+    left: 0;
+    z-index: 99;
+    @include transition(transform 0.15s cubic-bezier(0.645, 0.045, 0.355, 1));
+
+    &.tray--active {
+        .nav__tray {
+            @include translateX(0);
+        }
+
+        @include tablet() {
+
+            .nav__utility {
+                @include translateX(375px);
+            }
+        }
+    }
+
+    @include tablet() {
+        display: block;
+        position: fixed;
+    }
+}
+
+.branding__mobile {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: auto;
+    background: #373536;
+
+    @include tablet() {
+        display: none;
+    }
+
+    img {
+        height: auto;
+        width: auto;
+        margin: 9px 9px;
+    }
+}
+
+.branding {
+    position: relative;
+    top: 35px;
+    display: none;
+
+    @include tablet() {
+        display: block;
+    }
+
+    &__logo {
+        display: block;
+
+        @include tablet() {
+            max-width: 106px;
+        }
+
+        @include desktop() {
+            max-width: 128px;
+            height: auto;
+        }
+    }
+}

@@ -1,0 +1,71 @@
+/* Button Styles
+----------------------------------------------- */
+
+.btn {
+
+    &--primary {
+        display: inline-block;
+        padding: 14px 25px 12px;
+        background: $jaffa;
+        color: $white;
+        outline: none;
+        border: none;
+        line-height: 20px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        cursor: pointer;
+        font-size: 18px;
+        @include border-radius(8px);
+        transition: background .2s ease-in-out, color .2s ease-in-out, border-color .2s ease-in-out;
+
+        &:hover {
+            background: darken($jaffa, 8%);
+        }
+    }
+
+    &--outline {
+        background: transparent;
+        border: 1px solid $jaffa;
+        color: $jaffa;
+        padding: 13px 45px 11px;
+        position: relative;
+        top: -1px;
+        display: inline-block;
+        @include border-radius(8px);
+
+        &:hover {
+            background: darken($jaffa, 8%);
+            border-color: darken($jaffa, 8%);
+            color: $white;
+        }
+    }
+
+    &--outline-white {
+        background: $white;
+    }
+
+    &--submit {
+        padding: 15px 14px 14px;
+    }
+
+    &--loading {
+        background: $white;
+        color: $white;
+
+        img {
+            height: 14px;
+            width: auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        &:hover {
+            background: $white;
+            border-color: $jaffa;
+            color: $white;
+        }
+    }
+}

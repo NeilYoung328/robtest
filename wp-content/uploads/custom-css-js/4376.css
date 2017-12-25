@@ -1,0 +1,31 @@
+<!-- start Simple Custom CSS and JS -->
+<style type="text/css">
+.module-hero--white:before {
+    background: none !important;
+}
+.hero__content--white:before {
+    background: none !important;
+}
+.module-banner:before{
+     /* background: none !important; */
+}
+.entry__content{color:#4a4a4a;}
+
+.singular-page-2063 .module-banner:before{background:#fff;}
+
+.home .module-banner:before{background:#fff;;}
+
+.singular-page-164 .module-banner:before{
+     /* background: none; */
+       background: #fff none repeat scroll 0 0;
+
+}
+
+@media only screen and (min-width: 321px) and (max-width: 1025px) {
+
+.banner__content .btn {
+    visibility: visible !important;
+  }
+
+}</style>
+<!-- end Simple Custom CSS and JS -->

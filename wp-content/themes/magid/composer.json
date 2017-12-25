@@ -1,0 +1,23 @@
+{
+  "name": "magid",
+  "description": "A WordPress starter theme.",
+  "config": {
+    "vendor-dir": "vendor",
+    "bin-dir": "bin"
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://wpackagist.org"
+    }
+  ],
+  "require": {
+    "justintadlock/hybrid-core": "^3.0",
+    "mmucklo/krumo": "^0.5.7"
+  },
+  "autoload": {
+    "psr-4": {
+      "Magid\\": ""
+    }
+  }
+}

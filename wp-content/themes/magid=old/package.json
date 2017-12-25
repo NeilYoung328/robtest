@@ -1,0 +1,31 @@
+{
+  "name": "Magid",
+  "author": "Justin Rhodes <justin.m.rhodes@gmail.com>",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "https://JMRhodes@bitbucket.org/JMRhodes/magid.git"
+  },
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-cache": "^0.4.5",
+    "gulp-clean-css": "^2.0.3",
+    "gulp-load-plugins": "^1.0.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-imagemin": "^3.0.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.0.4",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^1.5.3",
+    "run-sequence": "^1.1.5",
+    "bower": "^1.8.0"
+  },
+  "scripts": {
+    "postinstall": "composer install && bower install && gulp build",
+    "build": "gulp build",
+    "production": "gulp build"
+  }
+}
